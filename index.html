@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Estacionamento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="logo">
+        <h1>Gerenciamento de Estacionamento</h1>
+    </div>
+
+    <div id="parking-lot">
+        <h2>Vagas</h2>
+        <ul id="slots-list"></ul>
+    </div>
+
+    <div id="controls">
+        <h2>Controles</h2>
+        <button onclick="addSlot()">Adicionar Vaga</button>
+        <button onclick="removeSlot()">Remover Vaga</button>
+    </div>
+
+    <div id="entry">
+        <h2>Registrar Entrada de Carro</h2>
+        <form onsubmit="registerEntry(event)">
+            <input type="text" id="car-plate" placeholder="Placa do Carro" required>
+            <input type="text" id="car-model" placeholder="Modelo do Carro" required>
+            <button type="submit">Registrar Entrada</button>
+        </form>
+    </div>
+
+    <div id="payment">
+        <h2>Total a Pagar:</h2>
+        <p id="total-due">R$ 0,00</p>
+        <button id="paid-btn" onclick="resetPayment()">Pago</button>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
