@@ -1,87 +1,71 @@
+/* Define a fonte padrão para o corpo do documento */
 body {
     font-family: Arial, sans-serif;
 }
 
+/* Estiliza o contêiner das vagas como um grid responsivo */
 .vagas-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    display: grid; /* Usa o layout de grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Cria colunas responsivas */
+    gap: 20px; /* Define um espaço de 20px entre os itens do grid */
 }
 
+/* Estiliza cada vaga individualmente */
 .vaga {
-    position: relative;
-    background-color: rgba(161, 161, 161, 0.76);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    font-size: 18px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: red; /* Define a cor do texto das vagas */
+    position: relative; /* Define a posição relativa para permitir posicionamento interno */
+    background-color: rgba(0, 0, 0, 0.747); /* Define a cor de fundo semi-transparente */
+    border-radius: 10px; /* Arredonda os cantos */
+    padding: 20px; /* Adiciona um padding interno */
+    text-align: center; /* Centraliza o texto */
+    font-size: 18px; /* Define o tamanho da fonte */
+    box-shadow: 0 2px 4px rgba(255, 0, 0, 0.459); /* Adiciona uma sombra com cor vermelha */
 }
 
+/* Adiciona um espaço inferior às informações do carro */
 .carro-info {
     margin-bottom: 10px;
 }
 
+/* Estiliza o botão de remover carro */
 .remover-carro-btn {
-    background-color: #0a0a0a;
-    color: rgba(0, 255, 221, 0.664);
-    border: none;
-    border-radius: 5px;
-    padding: 8px 15px;
-    cursor: pointer;
+    background-color: #0a0a0a; /* Define a cor de fundo */
+    color: rgba(255, 166, 0, 0.979); /* Define a cor do texto */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Arredonda os cantos */
+    padding: 8px 15px; /* Adiciona padding interno */
+    cursor: pointer; /* Define o cursor como ponteiro ao passar sobre o botão */
 }
 
+/* Define um estilo arredondado para botões com esta classe */
 .btn-rounded {
     border-radius: 20px;
 }
 
+/* Estiliza o botão de adicionar vaga */
 .btn-add-vaga {
-    background-color: #007bff;
-    color: rgb(0, 0, 0);
-    border: none;
+    background-color: #ffae00; /* Define a cor de fundo */
+    color: rgb(0, 0, 0); /* Define a cor do texto */
+    border: none; /* Remove a borda padrão */
 }
 
+/* Estiliza o botão de remover vaga */
 .btn-remove-vaga {
-    background-color: #6f00ff;
-    color: rgb(0, 0, 0);
-    border: none;
+    background-color: #ff0000; /* Define a cor de fundo */
+    color: rgb(0, 0, 0); /* Define a cor do texto */
+    border: none; /* Remove a borda padrão */
 }
 
+/* Estiliza o botão de adicionar carro */
 .btn-add-carro {
-    background-color: #00f7ff;
-    color: rgb(0, 0, 0);
-    border: none;
+    background-color: #fbff00; /* Define a cor de fundo */
+    color: rgb(0, 0, 0); /* Define a cor do texto */
+    border: none; /* Remove a borda padrão */
 }
 
-.neon-text {
-    color: rgb(34, 34, 34);
-    text-shadow: 
-        0 0 5px #00f,
-        0 0 10px #00f,
-        0 0 20px #00f,
-        0 0 40px #00f,
-        0 0 80px #00f,
-        0 0 160px #00f;
-    animation: neon-blink 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes neon-blink {
-    from {
-        text-shadow: 
-            0 0 5px #00f,
-            0 0 10px #00f,
-            0 0 20px #00f,
-            0 0 40px #00f,
-            0 0 80px #00f,
-            0 0 160px #00f;
-    }
-    to {
-        text-shadow: 
-            0 0 10px #00f,
-            0 0 20px #00f,
-            0 0 30px #00f,
-            0 0 50px #00f,
-            0 0 100px #00f,
-            0 0 200px #00f;
-    }
+/* Estiliza a logo */
+.logo {
+    width: 156px; /* Define a largura da logo */
+    height: auto; /* Mantém a proporção original da imagem */
+    margin: 0px auto; /* Centraliza a logo horizontalmente */
 }
