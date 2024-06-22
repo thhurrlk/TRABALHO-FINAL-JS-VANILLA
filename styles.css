@@ -69,3 +69,18 @@ body {
     height: auto; /* Mantém a proporção original da imagem */
     margin: 0px auto; /* Centraliza a logo horizontalmente */
 }
+
+.caixa-container {
+    background-color: rgba(0, 0, 0, 0.747);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.459);
+    margin-top: 20px;
+}
+
+.caixa {
+    font-weight: bold;
+}

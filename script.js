@@ -1,83 +1,77 @@
-// Array que armazena as vagas do estacionamento
 let vagas = [];
-
-// Objeto que armazena os temporizadores associados às vagas
 let temporizadores = {};
+let totalDia = 0; // Variável para armazenar o valor total do dia
 
-// Função para adicionar uma nova vaga ao estacionamento
 function adicionarVaga() {
-    vagas.push(null); // Adiciona uma vaga vazia (representada por null)
-    exibirVagas(); // Atualiza a exibição das vagas
+    vagas.push(null); // Adiciona uma vaga vazia
+    exibirVagas();
 }
 
-// Função para remover uma vaga vazia do estacionamento
 function removerVaga() {
-    const vagaVaziaIndex = vagas.findIndex(vaga => vaga === null); // Encontra o índice da primeira vaga vazia
+    const vagaVaziaIndex = vagas.findIndex(vaga => vaga === null);
     if (vagaVaziaIndex !== -1) {
-        cancelarTemporizador(vagaVaziaIndex); // Cancela o temporizador associado à vaga (se existir)
-        vagas.splice(vagaVaziaIndex, 1); // Remove a vaga do array
-        exibirVagas(); // Atualiza a exibição das vagas
+        cancelarTemporizador(vagaVaziaIndex);
+        vagas.splice(vagaVaziaIndex, 1); // Remove a vaga vazia
+        exibirVagas();
     } else {
-        alert('Não há vagas vazias para remover.'); // Alerta se não houver vagas vazias
+        alert('Não há vagas vazias para remover.');
     }
 }
 
-// Função para adicionar um carro a uma vaga vazia
 function adicionarCarro() {
-    const modelo = prompt('Digite o modelo do carro:'); // Solicita ao usuário o modelo do carro
+    const modelo = prompt('Digite o modelo do carro:');
     if (modelo) {
-        const vagaVaziaIndex = vagas.findIndex(vaga => vaga === null); // Encontra o índice da primeira vaga vazia
+        const vagaVaziaIndex = vagas.findIndex(vaga => vaga === null);
         if (vagaVaziaIndex !== -1) {
-            // Adiciona o carro à vaga, iniciando o tempo e o valor em 0
-            vagas[vagaVaziaIndex] = { modelo, tempo: 0, valor: 0 };
-            iniciarTemporizador(vagaVaziaIndex); // Inicia o temporizador para a vaga
-            exibirVagas(); // Atualiza a exibição das vagas
+            vagas[vagaVaziaIndex] = { modelo, tempo: 0, valor: 0 }; // Adiciona o carro à vaga vazia
+            iniciarTemporizador(vagaVaziaIndex);
+            exibirVagas();
         } else {
-            alert('Não há vagas disponíveis para estacionar o carro.'); // Alerta se não houver vagas disponíveis
+            alert('Não há vagas disponíveis para estacionar o carro.');
         }
     }
 }
 
-// Função para iniciar o temporizador que calcula o valor a ser pago pelo estacionamento
 function iniciarTemporizador(index) {
     temporizadores[index] = setInterval(() => {
-        vagas[index].tempo += 10; // Incrementa o tempo em 10 segundos
-        vagas[index].valor += 2; // Incrementa o valor em 2 reais
-        exibirVagas(); // Atualiza a exibição das vagas
-    }, 10000); // Define o intervalo de tempo para 10 segundos (10000 milissegundos)
+        vagas[index].tempo += 5; // Atualiza o tempo a cada 5 segundos
+        vagas[index].valor += 2;
+        exibirVagas();
+    }, 5000); // A cada 5 segundos (5000 milissegundos)
 }
 
-// Função para cancelar o temporizador associado a uma vaga
+
 function cancelarTemporizador(index) {
-    clearInterval(temporizadores[index]); // Cancela o temporizador
-    delete temporizadores[index]; // Remove o temporizador do objeto
+    clearInterval(temporizadores[index]);
+    delete temporizadores[index];
 }
 
-// Função para remover um carro de uma vaga e calcular o valor a ser pago
 function removerCarro(index) {
-    const valor = vagas[index].valor; // Obtém o valor a ser pago
+    const valor = vagas[index].valor;
+    totalDia += valor; // Adiciona o valor ao total do dia
     vagas[index] = { pagamento: valor }; // Armazena o valor do pagamento na vaga
-    cancelarTemporizador(index); // Cancela o temporizador associado à vaga
-    exibirVagas(); // Atualiza a exibição das vagas
+    cancelarTemporizador(index);
+    exibirVagas();
     setTimeout(() => {
         vagas[index] = null; // Define a vaga como vazia após 3 segundos
-        exibirVagas(); // Atualiza a exibição das vagas
-    }, 3000); // Define o tempo de espera para 3 segundos (3000 milissegundos)
+        exibirVagas();
+    }, 3000); // 3 segundos (3000 milissegundos)
 }
 
-// Função para exibir as vagas no contêiner HTML
+function calcularCaixa() {
+    document.getElementById('caixa').innerText = `Total do Dia: R$ ${totalDia}`;
+}
+
 function exibirVagas() {
-    const vagasContainer = document.getElementById('vagas-container'); // Obtém o contêiner de vagas do DOM
-    vagasContainer.innerHTML = ''; // Limpa o conteúdo do contêiner
+    const vagasContainer = document.getElementById('vagas-container');
+    vagasContainer.innerHTML = '';
     vagas.forEach((vaga, index) => {
-        const div = document.createElement('div'); // Cria um novo elemento div para a vaga
-        div.classList.add('vaga'); // Adiciona a classe 'vaga' ao elemento div
+        const div = document.createElement('div');
+        div.classList.add('vaga');
         if (vaga) {
             if (vaga.pagamento !== undefined) {
-                // Se o pagamento estiver definido, exibe o valor a ser pago
                 div.innerHTML = `<strong>Valor a pagar:</strong> R$ ${vaga.pagamento}`;
             } else {
-                // Se o carro estiver na vaga, exibe as informações do carro e o botão de remover
                 div.innerHTML = `
                     <div class="carro-info">
                         <strong>Modelo:</strong> ${vaga.modelo}<br>
@@ -88,10 +82,12 @@ function exibirVagas() {
                 `;
             }
         } else {
-            div.textContent = 'Vazia'; // Exibe 'Vazia' se a vaga estiver vazia
+            div.textContent = 'Vazia';
         }
-        vagasContainer.appendChild(div); // Adiciona o elemento div ao contêiner de vagas
+        vagasContainer.appendChild(div);
     });
+
+    calcularCaixa(); // Atualiza o valor do caixa sempre que as vagas são exibidas
 }
 
-exibirVagas(); // Chama a função para exibir as vagas inicialmente
+exibirVagas(); // Exibe as vagas inicialmente
