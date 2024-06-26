@@ -4,34 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estacionamento</title>
+    <!-- Inclui o CSS do Bootstrap para estilização -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Inclui o CSS personalizado -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <!-- Define uma imagem de fundo com sobreposição escura para melhor contraste -->
     <body style="background-image: url('porscheparaoprojeto.jpg');background-size: cover;background-position: 100% 25%;background-color: #0e0e0ea6;background-blend-mode: multiply; ">
         <div class="container">
+            <!-- Centraliza o conteúdo horizontalmente -->
             <div class="row justify-content-center">
                 <div class="col-md-12 d-flex flex-column">
+                    <!-- Centraliza a logo na horizontal -->
                     <div class="mx-auto">
-                    <img src="logotipofinal.png" alt="Logo" class="logo mb-4">
-                    <!-- <h1 class="text-center mb-4 neon-text">Müller Parking</h1> -->
-                </div>
-                
+                        <!-- Exibe a logo do estacionamento -->
+                        <img src="logotipofinal.png" alt="Logo" class="logo mb-4">
+                        <!-- <h1 class="text-center mb-4 neon-text">Müller Parking</h1> -->
+                    </div>
 
-                <div class="button-container text-center mb-4">
-                    <button class="btn btn-add-vaga btn-rounded mr-2" onclick="adicionarVaga()">Adicionar Vaga</button>
-                    <button class="btn btn-remove-vaga btn-rounded mr-2" onclick="removerVaga()">Remover Vaga</button>
-                    <button class="btn btn-add-carro btn-rounded" onclick="adicionarCarro()">Adicionar Carro</button>
-                <div id="vagas-container" class="vagas-container py-4 px-2 mx-auto "></div>
-                <div id="caixa-container" class="caixa-container text-center mt-4">
-                    <div id="caixa" class="caixa">Total do Dia: R$ 0</div>
-                </div>
+                    <!-- Contêiner para os botões de ação -->
+                    <div class="button-container text-center mb-4">
+                        <!-- Botão para adicionar uma nova vaga -->
+                        <button class="btn btn-add-vaga btn-rounded mr-2" onclick="adicionarVaga()">Adicionar Vaga</button>
+                        <!-- Botão para remover uma vaga vazia -->
+                        <button class="btn btn-remove-vaga btn-rounded mr-2" onclick="removerVaga()">Remover Vaga</button>
+                        <!-- Botão para adicionar um carro a uma vaga vazia -->
+                        <button class="btn btn-add-carro btn-rounded" onclick="adicionarCarro()">Adicionar Carro</button>
+                        <!-- Contêiner para exibir as vagas -->
+                        <div id="vagas-container" class="vagas-container py-4 px-2 mx-auto "></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="script.js"></script>
-</body>
+        <!-- Inclui o script JavaScript -->
+        <script src="script.js"></script>
+    </body>
 </html>
